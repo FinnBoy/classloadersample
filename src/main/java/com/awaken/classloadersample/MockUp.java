@@ -1,6 +1,10 @@
-package com.awaken;
+package com.awaken.classloadersample;
 
-public class Mockup {
+import java.util.Arrays;
+import java.util.Map;
+import java.util.Properties;
+
+public class MockUp {
 
     public static final int NUMBER = 1;
 
@@ -36,6 +40,7 @@ public class Mockup {
     static {
         digit = 10;
         word = "message";
+        System.out.println("static block");
     }
 
     /**
@@ -46,6 +51,7 @@ public class Mockup {
     {
         this.precision = 321;
         this.character = "information";
+        System.out.println("instance block");
     }
 
     /**
@@ -53,8 +59,33 @@ public class Mockup {
      * 2nd part: object constructing<br>
      * 3rd exec: constructor method
      */
-    public Mockup() {
+    public MockUp() {
         this.string = NUMBER + LITERALS + this.decimal;
     }
 
+    /**
+     * show environment.
+     */
+    public void environment() {
+
+        Map<String, String> env = System.getenv();
+
+        Properties properties = System.getProperties();
+
+        String jrehome = properties.getProperty("java.home");
+        String classpath = properties.getProperty("java.class.path");
+        String extDirs = properties.getProperty("java.ext.dirs");
+
+        System.out.println(jrehome);
+        System.out.println("************* classpath *************");
+        Arrays.stream(classpath.split(":")).forEach(o -> {
+            System.out.println(o);
+        });
+
+        System.out.println("************* ext dirs *************");
+        Arrays.stream(extDirs.split(":")).forEach(o -> {
+            System.out.println(o);
+        });
+
+    }
 }

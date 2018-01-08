@@ -1,16 +1,17 @@
-package com.awaken;
+package com.awaken.classloadersample;
 
 /**
- * Hello world!
+ * build MockUp Object
  */
-public class App {
-    public static void main(String[] args) {
+public class MockUpBuilder {
 
-        Mockup mockup = null;
+    public MockUp create() {
 
-        mockup = new Mockup();
+        MockUp mockUp = null;
 
-        mockup = new Mockup() {
+        mockUp = new MockUp();
+
+        mockUp = new MockUp() {
 
             /**
              * priority: <br>
@@ -22,6 +23,6 @@ public class App {
             }
         };
 
-        System.out.println("Hello World!");
+        return mockUp;
     }
 }
